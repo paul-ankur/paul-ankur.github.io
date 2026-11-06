@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Education & Achievements | Ankur Paul</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* EDUCATION */
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.institute {
+    padding: 20px 10px;
+}
+
+.logo {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e5ec;
+}
+
+.institute h3 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+
+.course {
+    color: var(--body-text);
+    font-size: 15px;
+}
+
+.year {
+    color: var(--secondary-text);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ACHIEVEMENTS */
+
+.achievements {
+    margin-top: 75px;
+}
+
+.achievements ul {
+    padding-left: 25px;
+}
+
+.achievements li {
+    margin-bottom: 16px;
+    color: var(--body-text);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .education-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .logo {
+        width: 125px;
+        height: 125px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUTOMATIC NAVIGATION -->
+
+<div id="menu-container"></div>
+
+
+<!-- PAGE HEADER -->
+
+<header>
+    <h1>Education & Achievements</h1>
+</header>
+
+
+<!-- MAIN CONTENT -->
+
+<main>
+
+    <!-- EDUCATION -->
+
+    <section>
+
+        <h2>Education</h2>
+
+        <div class="education-grid">
+
+            <!-- INDIAN STATISTICAL INSTITUTE -->
+
+            <div class="institute">
+
+                <img class="logo"
+                     src="images/isi.png"
+                     alt="Indian Statistical Institute Logo">
+
+                <h3>Indian Statistical Institute, Kolkata</h3>
+
+                <div class="course">
+                    Ph.D. in Applied Mathematics
+                </div>
+
+                <div class="year">
+                    2026 – Present
+                </div>
+
+            </div>
+
+
+            <!-- JADAVPUR UNIVERSITY -->
+
+            <div class="institute">
+
+                <img class="logo"
+                     src="images/ju.png"
+                     alt="Jadavpur University Logo">
+
+                <h3>Jadavpur University</h3>
+
+                <div class="course">
+                    M.Sc. in Mathematics
+                </div>
+
+                <div class="year">
+                    2023 – 2025
+                </div>
+
+            </div>
+
+
+            <!-- UNIVERSITY OF CALCUTTA -->
+
+            <div class="institute">
+
+                <img class="logo"
+                     src="images/cu.png"
+                     alt="University of Calcutta Logo">
+
+                <h3>University of Calcutta</h3>
+
+                <div class="course">
+                    Your Degree
+                </div>
+
+                <div class="year">
+                    Your Year
+                </div>
+
+            </div>
+
+
+            <!-- FOURTH INSTITUTION -->
+
+            <div class="institute">
+
+                <img class="logo"
+                     src="images/random.png"
+                     alt="Institution Logo">
+
+                <h3>Institution Name</h3>
+
+                <div class="course">
+                    Course
+                </div>
+
+                <div class="year">
+                    Year
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACHIEVEMENTS -->
+
+    <section class="achievements">
+
+        <h2>Achievements</h2>
+
+        <ul>
+
+            <li>
+                Qualified Joint UGC-CSIR NET in Mathematical Sciences (2025),
+                securing All India Rank 11 among 26,114 candidates; awarded
+                the UGC Junior Research Fellowship (JRF).
+            </li>
+
+            <li>
+                Qualified GATE in Mathematics, securing All India Rank 59
+                among 11,561 candidates (2026).
+            </li>
+
+            <li>
+                Qualified JAM in Mathematics (2023).
+            </li>
+
+            <li>
+                Qualified CUET in Mathematics (2023).
+            </li>
+
+            <li>
+                Recipient of National Central Sector Scholarship at
+                undergraduate level.
+            </li>
+
+            <li>
+                Recipient of Gold Medal for Performance Excellence at the
+                school level in SOF International Mathematics Olympiad (2020).
+            </li>
+
+        </ul>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Ankur Paul. All rights reserved.
+</footer>
+
+
+<!-- AUTOMATIC MENU SCRIPT -->
+
+<script src="menu.js"></script>
+
+</body>
+</html>

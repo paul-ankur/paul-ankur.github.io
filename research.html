@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Research | Ankur Paul</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* RESEARCH PAGE */
+
+.research-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 25px;
+}
+
+.research-container h1 {
+    text-align: left;
+    font-size: 38px;
+    margin-bottom: 40px;
+    color: var(--heading);
+}
+
+.research-interests,
+.collaborators,
+.publications {
+    margin-bottom: 60px;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* RESEARCH BOXES */
+
+.research-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.research-card h3 {
+    margin-top: 0;
+    color: var(--heading);
+}
+
+.research-card p {
+    color: var(--secondary-text);
+    line-height: 1.7;
+}
+
+/* COLLABORATOR BOXES */
+
+.collaborator-card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.collaborator-card h3 {
+    margin-top: 0;
+    color: var(--heading);
+}
+
+.collaborator-card p {
+    color: var(--secondary-text);
+    line-height: 1.7;
+}
+
+.collaborator-card a,
+.publication-item a {
+    color: var(--heading);
+    text-decoration: underline;
+}
+
+/* PUBLICATION BOX */
+
+.publication-item {
+    background: white;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    line-height: 1.7;
+}
+
+.publication-item h3 {
+    margin-top: 0;
+    color: var(--heading);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 700px) {
+
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .research-container {
+        padding: 0 15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUTOMATIC NAVIGATION -->
+
+<div id="menu-container"></div>
+
+
+<!-- MAIN CONTENT -->
+
+<main class="research-container">
+
+    <h1>Research</h1>
+
+
+    <!-- RESEARCH INTERESTS -->
+
+    <section class="research-interests" id="research-interests">
+
+        <h2>Research Interests</h2>
+
+        <div class="research-grid">
+
+            <div class="research-card left-accent-box">
+
+                <h3>Nonlinear Dynamics</h3>
+
+                <p>
+                    Dynamical systems, swarmalation, collective behaviour
+                    and complex systems.
+                </p>
+
+            </div>
+
+
+            <div class="research-card left-accent-box">
+
+                <h3>Mathematical Ecology</h3>
+
+                <p>
+                    Mathematical modelling of biological systems,
+                    population dynamics, ecological interactions
+                    and pattern formation.
+                </p>
+
+            </div>
+
+
+            <div class="research-card left-accent-box">
+
+                <h3>Collective Animal Movement</h3>
+
+                <p>
+                    Mathematical modelling of collective movement,
+                    swarmalators, orientation and self-organization.
+                </p>
+
+            </div>
+
+
+            <div class="research-card left-accent-box">
+
+                <h3>Scientific Machine Learning</h3>
+
+                <p>
+                    Data-driven modelling and machine learning
+                    approaches for understanding and predicting
+                    complex dynamical and ecological systems.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COLLABORATORS -->
+
+    <section class="collaborators" id="collaborators">
+
+        <h2>Collaborators</h2>
+
+
+        <div class="collaborator-card left-accent-box">
+
+            <h3>Prof. Dibakar Ghosh</h3>
+
+            <p>
+                Non-linear dynamics, swarmalators,
+                synchronization and complex systems.
+            </p>
+
+        </div>
+
+
+        <div class="collaborator-card left-accent-box">
+
+            <h3>Prof. Joydev Chattopadhyay</h3>
+
+            <p>
+                Mathematical biology,
+                ecological modelling and population dynamics.
+            </p>
+
+        </div>
+
+
+        <div class="collaborator-card left-accent-box">
+
+            <h3>Prof. Uttam Ghosh</h3>
+
+            <p>
+                Mathematical biology, non-linear dynamical systems
+                and fractional calculus.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PUBLICATIONS -->
+
+    <section class="publications" id="publications">
+
+        <h2>Publications</h2>
+
+
+        <div class="publication-item left-accent-box">
+
+            <h3>
+                A Regression-Based Deep Learning Framework for Pattern
+                Identification and Construction of Pattern Transition
+                Diagram in Reaction–Diffusion Systems
+            </h3>
+
+            <p>
+                Ankur Paul, Amrit Bose, Uttam Ghosh (2026).
+            </p>
+
+            <p>
+                Communicated. Preprint DOI:
+
+                <a href="https://doi.org/10.21203/rs.3.rs-10332413/v1"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    10.21203/rs.3.rs-10332413/v2
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+    <p>© 2026 Ankur Paul. All rights reserved.</p>
+</footer>
+
+
+<!-- AUTOMATIC MENU SCRIPT -->
+
+<script src="menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ankur Paul | Academic Website </title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* MAIN PROFILE SECTION */
+
+.profile {
+    display: flex;
+    align-items: stretch;
+    gap: 45px;
+}
+
+.profile-photo {
+    width: 240px;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #c5ced9;
+    align-self: stretch;
+}
+
+.profile-details {
+    flex: 1;
+}
+
+/* CV AND SOCIAL LINKS */
+
+.profile-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.cv-button,
+.social-link {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cv-button {
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    border: 1px solid var(--button-border);
+    color: var(--body-text);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.cv-button:hover {
+    background: var(--button-border);
+    color: #ffffff;
+}
+
+.social-link {
+    border: 1px solid var(--button-border);
+    background: transparent;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.social-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--header-text);
+    border-color: var(--header-text);
+}
+
+.social-link:hover img {
+    filter: brightness(0) invert(0);
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE PROFILE */
+
+@media (max-width: 650px) {
+
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 230px;
+    }
+
+    .profile-details {
+        text-align: center;
+        width: 100%;
+    }
+
+    .profile-links {
+        justify-content: center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUTOMATIC NAVIGATION -->
+
+<div id="menu-container"></div>
+
+
+<!-- MAIN PROFILE SECTION -->
+
+<main class="container">
+
+    <section class="profile">
+
+        <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600"
+            alt="Profile photograph"
+            class="profile-photo"
+        >
+
+        <div class="profile-details">
+
+            <h1>Ankur Paul</h1>
+            <p class="institution">
+                Junior Research Fellow, Physics and Applied Mathematics Unit (PAMU)<br>
+                Indian Statistical Institute, Kolkata — 700108
+            </p>
+
+            <p>
+                I am a doctoral research scholar in Indian Statistical Institute,
+                pursuing research in Applied Mathematics, with interests in
+                nonlinear dynamics and mathematical modelling. My research
+                interests broadly encompass collective animal movement,
+                ecological modelling, mathematical biology, swarmalators,
+                and scientific machine learning.
+            </p>
+
+            <div class="profile-links">
+
+                <a href="https://www.google.com"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="cv-button">CV</a>
+
+                <a href="#"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-link"
+                   aria-label="Google Scholar">
+                    <img
+                        src="https://cdn.simpleicons.org/googlescholar/4285F4"
+                        alt="Google Scholar">
+                </a>
+
+                <a href="https://orcid.org/0009-0008-0281-3212"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-link"
+                   aria-label="ORCID">
+                    <img
+                        src="https://cdn.simpleicons.org/orcid/A6CE39"
+                        alt="ORCID">
+                </a>
+
+                <a href="https://www.linkedin.com/in/ankur-paul-98662b400/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-link"
+                   aria-label="LinkedIn">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                        alt="LinkedIn">
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Ankur Paul.
+</footer>
+
+
+<!-- AUTOMATIC MENU SCRIPT -->
+
+<script src="menu.js"></script>
+
+</body>
+</html>
