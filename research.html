@@ -39,10 +39,7 @@
     gap: 25px;
 }
 
-/* RESPONSIVE DESIGN */
-
 @media (max-width: 700px) {
-
     .research-grid {
         grid-template-columns: 1fr;
     }
@@ -50,7 +47,6 @@
     .research-container {
         padding: 0 15px;
     }
-
 }
 
 </style>
@@ -58,171 +54,93 @@
 
 <body>
 
-<!-- AUTOMATIC NAVIGATION -->
-
 <div id="menu-container"></div>
-
-
-<!-- MAIN CONTENT -->
 
 <main class="research-container">
 
-    <h1>Research</h1>
+<h1>Research</h1>
+
+<section class="research-interests" id="research-interests">
+
+<h2>Research Interests</h2>
+
+<div class="research-grid">
+
+    <div class="box">
+        <h3>Nonlinear Dynamics</h3>
+        <p>Dynamical systems, swarmalation, collective behaviour and complex systems.</p>
+    </div>
+
+    <div class="box">
+        <h3>Mathematical Ecology</h3>
+        <p>Mathematical modelling of biological systems, population dynamics, ecological interactions and pattern formation.</p>
+    </div>
+
+    <div class="box">
+        <h3>Collective Animal Movement</h3>
+        <p>Mathematical modelling of collective movement, swarmalators, orientation and self-organization.</p>
+    </div>
+
+    <div class="box">
+        <h3>Scientific Machine Learning</h3>
+        <p>Data-driven modelling and machine learning approaches for understanding and predicting complex dynamical and ecological systems.</p>
+    </div>
+
+</div>
+
+</section>
 
 
-    <!-- RESEARCH INTERESTS -->
+<section class="collaborators" id="collaborators">
 
-    <section class="research-interests" id="research-interests">
+<h2>Collaborators</h2>
 
-        <h2>Research Interests</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px;">
 
-        <div class="research-grid">
+    <div class="box">
+        <h3>Prof. Dibakar Ghosh</h3>
+        <p>Nonlinear dynamics, swarmalators, synchronization and complex systems.</p>
+    </div>
 
-            <div class="box">
+    <div class="box">
+        <h3>Prof. Joydev Chattopadhyay</h3>
+        <p>Mathematical biology, ecological modelling and population dynamics.</p>
+    </div>
 
-                <h3>Nonlinear Dynamics</h3>
+    <div class="box">
+        <h3>Prof. Uttam Ghosh</h3>
+        <p>Mathematical biology, nonlinear dynamical systems and fractional calculus.</p>
+    </div>
 
-                <p>
-                    Dynamical systems, swarmalation, collective behaviour
-                    and complex systems.
-                </p>
+</div>
 
-            </div>
-
-
-            <div class="box">
-
-                <h3>Mathematical Ecology</h3>
-
-                <p>
-                    Mathematical modelling of biological systems,
-                    population dynamics, ecological interactions
-                    and pattern formation.
-                </p>
-
-            </div>
+</section>
 
 
-            <div class="box">
+<section class="publications" id="publications">
 
-                <h3>Collective Animal Movement</h3>
+<h2>Publications</h2>
 
-                <p>
-                    Mathematical modelling of collective movement,
-                    swarmalators, orientation and self-organization.
-                </p>
+<div class="box">
 
-            </div>
+    <h3>A Regression-Based Deep Learning Framework for Pattern Identification and Construction of Pattern Transition Diagram in Reaction–Diffusion Systems</h3>
 
+    <p>Ankur Paul, Amrit Bose, Uttam Ghosh (2026).</p>
 
-            <div class="box">
+    <p>
+        Communicated. Preprint DOI:
+        <a href="https://doi.org/10.21203/rs.3.rs-10332413/v1" target="_blank" rel="noopener noreferrer">10.21203/rs.3.rs-10332413/v1</a>
+    </p>
 
-                <h3>Scientific Machine Learning</h3>
+</div>
 
-                <p>
-                    Data-driven modelling and machine learning
-                    approaches for understanding and predicting
-                    complex dynamical and ecological systems.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- COLLABORATORS -->
-
-    <section class="collaborators" id="collaborators">
-
-        <h2>Collaborators</h2>
-
-        <div class="box-row">
-
-            <div class="box">
-
-                <h3>Prof. Dibakar Ghosh</h3>
-
-                <p>
-                    Non-linear dynamics, swarmalators,
-                    synchronization and complex systems.
-                </p>
-
-            </div>
-
-
-            <div class="box">
-
-                <h3>Prof. Joydev Chattopadhyay</h3>
-
-                <p>
-                    Mathematical biology,
-                    ecological modelling and population dynamics.
-                </p>
-
-            </div>
-
-
-            <div class="box">
-
-                <h3>Prof. Uttam Ghosh</h3>
-
-                <p>
-                    Mathematical biology, non-linear dynamical systems
-                    and fractional calculus.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PUBLICATIONS -->
-
-    <section class="publications" id="publications">
-
-        <h2>Publications</h2>
-
-        <div class="box">
-
-            <h3>
-                A Regression-Based Deep Learning Framework for Pattern
-                Identification and Construction of Pattern Transition
-                Diagram in Reaction–Diffusion Systems
-            </h3>
-
-            <p>
-                Ankur Paul, Amrit Bose, Uttam Ghosh (2026).
-            </p>
-
-            <p>
-                Communicated. Preprint DOI:
-
-                <a href="https://doi.org/10.21203/rs.3.rs-10332413/v1"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    10.21203/rs.3.rs-10332413/v1
-                </a>
-            </p>
-
-        </div>
-
-    </section>
+</section>
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer>
-    <p>© 2026 Ankur Paul. All rights reserved.</p>
+    <p>© 2026 Ankur Paul.</p>
 </footer>
-
-
-<!-- AUTOMATIC MENU SCRIPT -->
 
 <script src="menu.js"></script>
 
