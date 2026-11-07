@@ -1,148 +1,455 @@
 
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================
+   ANKUR PAUL - ACADEMIC WEBSITE
+   GLOBAL STYLESHEET
+   ========================================= */
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* COLOR SCHEME */
 
-<title>Research | Ankur Paul</title>
+:root {
+    --body-bg: #f4f6fa;
+    --body-text: #000000;
 
-<link rel="stylesheet" href="style.css">
+    --heading: #14243a;
+    --secondary-text: #536579;
 
-<style>
+    --header-bg: #120101;
+    --header-text: #dce3e9;
 
-/* RESEARCH PAGE */
+    --footer-bg: #120101;
+    --footer-text: #9ba9b8;
 
-.research-container {
-    max-width: 1100px;
-    margin: 50px auto;
-    padding: 0 25px;
+    --accent: #ffd300;
+
+    --border: #cbd4df;
+    --button-border: #536579;
+
+    --font-main: "Times New Roman", serif;
+    --font-content: -apple-system, BlinkMacSystemFont,
+                    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.research-container h1 {
-    text-align: left;
-    font-size: 38px;
-    margin-bottom: 40px;
-    color: var(--heading);
+/* GLOBAL RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.research-interests,
-.collaborators,
-.publications {
-    margin-bottom: 60px;
+html {
+    scroll-behavior: smooth;
 }
 
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+body {
+    background: var(--body-bg);
+    color: var(--body-text);
+    font-family: var(--font-main);
+    line-height: 1.3;
+}
+
+/* =========================================
+   NAVIGATION HEADER
+   ========================================= */
+
+nav {
+    background: var(--header-bg);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* WEBSITE NAME */
+
+.site-name {
+    color: var(--header-text);
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-name:hover {
+    color: var(--accent);
+}
+
+/* NAVIGATION LINKS */
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 25px;
+    list-style: none;
 }
 
-@media (max-width: 700px) {
-    .research-grid {
-        grid-template-columns: 1fr;
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+/* CENTER-OUTWARD UNDERLINE */
+
+.nav-links > li > a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--header-text);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-links > li > a:hover {
+    color: var(--accent);
+}
+
+.nav-links > li > a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   DROPDOWN MENU
+   ========================================= */
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: var(--header-bg);
+    list-style: none;
+    padding: 8px 0;
+    z-index: 1000;
+    border-top: 2px solid var(--accent);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 9px 18px;
+    font-size: 16px;
+    white-space: nowrap;
+    color: var(--header-text);
+}
+
+/* DROPDOWN HOVER */
+
+.dropdown-menu a:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* NO UNDERLINE ANIMATION ON DROPDOWN ITEMS */
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+/* DESKTOP DROPDOWN */
+
+@media (min-width: 851px) {
+
+    .dropdown:hover > .dropdown-menu,
+    .dropdown:focus-within > .dropdown-menu {
+        display: block;
     }
 
-    .research-container {
-        padding: 0 15px;
+}
+
+/* DROPDOWN ARROW */
+
+.dropdown > a .arrow {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+}
+
+@media (min-width: 851px) {
+
+    .dropdown:hover > a .arrow {
+        transform: rotate(180deg);
+    }
+
+}
+
+/* =========================================
+   PAGE CONTAINER
+   ========================================= */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 75px 35px 70px;
+    font-family: var(--font-content);
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 35px 70px;
+    font-family: var(--font-content);
+}
+
+/* PAGE HEADER */
+
+header {
+    max-width: 1100px;
+    margin: 65px auto 40px;
+    padding: 0 35px;
+    font-family: var(--font-content);
+}
+
+/* =========================================
+   GENERAL HEADING SETTINGS
+   ========================================= */
+
+h1{
+    font-family: "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #000000;
+}
+
+h2{
+    font-family: "Times New Roman", serif;
+    font-size: 25px;
+    font-weight: 900;
+    color: #331204;
+}
+
+h3 {
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #E2581D;
+}
+
+
+/* =========================================
+   GENERAL TEXT
+   ========================================= */
+
+p {
+    color: var(--body-text);
+}
+
+p, li {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.institution {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #331204;
+   margin-bottom: 8px;
+}
+
+
+/* =========================================
+   LINKS
+   ========================================= */
+
+a {
+    transition: color 0.3s ease;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.cv-button {
+    font-family: "Arial Black", Arial, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    border: 1px solid var(--button-border);
+    color: var(--body-text);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.cv-button:hover {
+    background: var(--button-border);
+    color: #ffffff;
+}
+
+/* =========================================
+   SOCIAL LINKS
+   ========================================= */
+
+.social-link {
+    border: 1px solid var(--button-border);
+    background: transparent;
+    transition: background 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.social-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: filter 0.3s ease,
+                transform 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--header-text);
+    border-color: var(--header-text);
+}
+
+.social-link:hover img {
+    filter: brightness(0) invert(0);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   SECTION DIVIDERS
+   ========================================= */
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 30px 0;
+}
+
+/* =========================================
+   IMAGES
+   ========================================= */
+
+img {
+    max-width: 100%;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    background: var(--footer-bg);
+    text-align: center;
+    padding: 15px;
+    color: var(--footer-text);
+    font-family: var(--font-main);
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - TABLETS
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: static;
+        width: 100%;
+        min-width: 190px;
+        box-shadow: none;
+        border-top: 1px solid var(--accent);
+    }
+
+    .dropdown.active > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown.active > a .arrow {
+        transform: rotate(180deg);
     }
 }
 
-</style>
-</head>
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE
+   ========================================= */
 
-<body>
+@media (max-width: 650px) {
 
-<div id="menu-container"></div>
+    .container {
+        padding: 45px 22px;
+    }
 
-<main class="research-container">
+    main {
+        padding: 0 22px 50px;
+    }
 
-<h1>Research</h1>
+    header {
+        padding: 0 22px;
+        margin-top: 45px;
+    }
 
-<section class="research-interests" id="research-interests">
+    h1,
+    .profile-details h1 {
+        font-size: 25px;
+    }
 
-<h2>Research Interests</h2>
+    .about {
+        font-size: 17px;
+        text-align: justify;
+    }
 
-<div class="research-grid">
+    .nav-links {
+        gap: 15px;
+    }
 
-    <div class="box">
-        <h3>Nonlinear Dynamics</h3>
-        <p>Dynamical systems, swarmalation, collective behaviour and complex systems.</p>
-    </div>
-
-    <div class="box">
-        <h3>Mathematical Ecology</h3>
-        <p>Mathematical modelling of biological systems, population dynamics, ecological interactions and pattern formation.</p>
-    </div>
-
-    <div class="box">
-        <h3>Collective Animal Movement</h3>
-        <p>Mathematical modelling of collective movement, swarmalators, orientation and self-organization.</p>
-    </div>
-
-    <div class="box">
-        <h3>Scientific Machine Learning</h3>
-        <p>Data-driven modelling and machine learning approaches for understanding and predicting complex dynamical and ecological systems.</p>
-    </div>
-
-</div>
-
-</section>
+    .nav-links a {
+        font-size: 16px;
+    }
+}
 
 
-<section class="collaborators" id="collaborators">
+/* =========================================
+   UNIVERSAL BOX DESIGN
+   ========================================= */
 
-<h2>Collaborators</h2>
+.box {
+    background: #ffffff;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-left: 4px solid transparent;
+    border-radius: 8px;
+    transition: border-left-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
 
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px;">
+/* BOX HOVER EFFECT */
 
-    <div class="box">
-        <h3>Prof. Dibakar Ghosh</h3>
-        <p>Nonlinear dynamics, swarmalators, synchronization and complex systems.</p>
-    </div>
-
-    <div class="box">
-        <h3>Prof. Joydev Chattopadhyay</h3>
-        <p>Mathematical biology, ecological modelling and population dynamics.</p>
-    </div>
-
-    <div class="box">
-        <h3>Prof. Uttam Ghosh</h3>
-        <p>Mathematical biology, nonlinear dynamical systems and fractional calculus.</p>
-    </div>
-
-</div>
-
-</section>
-
-
-<section class="publications" id="publications">
-
-<h2>Publications</h2>
-
-<div class="box">
-
-    <h3>A Regression-Based Deep Learning Framework for Pattern Identification and Construction of Pattern Transition Diagram in Reaction–Diffusion Systems</h3>
-
-    <p>Ankur Paul, Amrit Bose, Uttam Ghosh (2026).</p>
-
-    <p>
-        Communicated. Preprint DOI:
-        <a href="https://doi.org/10.21203/rs.3.rs-10332413/v1" target="_blank" rel="noopener noreferrer">10.21203/rs.3.rs-10332413/v1</a>
-    </p>
-
-</div>
-
-</section>
-
-</main>
-
-<footer>
-    <p>© 2026 Ankur Paul. All rights reserved.</p>
-</footer>
-
-<script src="menu.js"></script>
-
-</body>
-</html>
+.box:hover {
+    border-left: 4px solid #331204;
+    transform: translateX(6px);
+    box-shadow: 0 4px 12px rgba(51, 18, 4, 0.08);
+}
