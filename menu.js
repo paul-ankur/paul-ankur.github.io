@@ -1,102 +1,169 @@
 
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
 
-    const menuContainer = document.getElementById("menu-container");
+    function initialiseMenu() {
 
-    if (!menuContainer) return;
+        const menuContainer = document.getElementById("menu-container");
 
-    const menuPath = new URL("/menu.html", window.location.origin);
+        if (!menuContainer) {
+            console.error("menu-container not found.");
+            return;
+        }
 
-    fetch(menuPath, { cache: "no-store" })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("HTTP error: " + response.status);
-            }
+        const menuPath = new URL("/menu.html", window.location.origin);
 
-            return response.text();
-        })
-        .then(menuHTML => {
+        fetch(menuPath, { cache: "no-store" })
 
-            menuContainer.innerHTML = menuHTML;
+            .then(response => {
 
-            const nav = menuContainer.querySelector("#main-nav");
-            const menuToggle = menuContainer.querySelector("#menu-toggle");
-            const menuOverlay = menuContainer.querySelector("#menu-overlay");
-            const navLinks = menuContainer.querySelector("#nav-links");
-
-            if (!nav || !menuToggle || !menuOverlay || !navLinks) {
-                console.error("Navigation elements missing.");
-                return;
-            }
-
-            function openMenu() {
-                nav.classList.add("menu-open");
-                document.body.classList.add("menu-active");
-                menuToggle.setAttribute("aria-expanded", "true");
-            }
-
-            function closeMenu() {
-                nav.classList.remove("menu-open");
-                document.body.classList.remove("menu-active");
-                menuToggle.setAttribute("aria-expanded", "false");
-
-                navLinks.querySelectorAll(".dropdown").forEach(item => {
-                    item.classList.remove("active");
-                });
-            }
-
-            menuToggle.addEventListener("click", openMenu);
-
-            menuOverlay.addEventListener("click", closeMenu);
-
-            document.addEventListener("keydown", function (event) {
-                if (event.key === "Escape") {
-                    closeMenu();
+                if (!response.ok) {
+                    throw new Error("Could not load menu.html: " + response.status);
                 }
-            });
 
-            const dropdowns = navLinks.querySelectorAll(".dropdown");
+                return response.text();
 
-            dropdowns.forEach(dropdown => {
+            })
 
-                const link = dropdown.querySelector(":scope > a");
+            .then(menuHTML => {
 
-                if (!link) return;
+                menuContainer.innerHTML = menuHTML;
 
-                link.addEventListener("click", function (event) {
+                const nav = menuContainer.querySelector("#main-nav");
+                const menuToggle = menuContainer.querySelector("#menu-toggle");
+                const menuOverlay = menuContainer.querySelector("#menu-overlay");
+                const navLinks = menuContainer.querySelector("#nav-links");
 
-                    if (window.innerWidth <= 850) {
+                if (!nav || !menuToggle || !menuOverlay || !navLinks) {
+                    console.error("One or more navigation elements are missing.");
+                    return;
+                }
 
-                        if (!dropdown.classList.contains("active")) {
+                function openMenu() {
 
-                            event.preventDefault();
+                    nav.classList.add("menu-open");
+                    document.body.classList.add("menu-active");
 
-                            dropdowns.forEach(item => {
-                                item.classList.remove("active");
-                            });
+                    menuToggle.setAttribute("aria-expanded", "true");
 
-                            dropdown.classList.add("active");
-                        }
+                }
+
+                function closeMenu() {
+
+                    nav.classList.remove("menu-open");
+                    document.body.classList.remove("menu-active");
+
+                    menuToggle.setAttribute("aria-expanded", "false");
+
+                    navLinks.querySelectorAll(".dropdown").forEach(item => {
+                        item.classList.remove("active");
+                    });
+
+                }
+
+                /* HAMBURGER BUTTON */
+
+                menuToggle.addEventListener("click", function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    if (nav.classList.contains("menu-open")) {
+                        closeMenu();
+                    } else {
+                        openMenu();
                     }
+
                 });
+
+                /* OVERLAY */
+
+                menuOverlay.addEventListener("click", closeMenu);
+
+                /* ESCAPE KEY */
+
+                document.addEventListener("keydown", function (event) {
+
+                    if (event.key === "Escape") {
+                        closeMenu();
+                    }
+
+                });
+
+                /* MOBILE DROPDOWNS */
+
+                const dropdowns = navLinks.querySelectorAll(".dropdown");
+
+                dropdowns.forEach(dropdown => {
+
+                    const link = dropdown.querySelector(":scope > a");
+
+                    if (!link) return;
+
+                    link.addEventListener("click", function (event) {
+
+                        if (window.innerWidth <= 850) {
+
+                            if (!dropdown.classList.contains("active")) {
+
+                                event.preventDefault();
+
+                                dropdowns.forEach(item => {
+                                    item.classList.remove("active");
+                                });
+
+                                dropdown.classList.add("active");
+
+                            }
+
+                        }
+
+                    });
+
+                });
+
+                /* NORMAL NAVIGATION LINKS */
+
+                const regularLinks = navLinks.querySelectorAll("li:not(.dropdown) > a");
+
+                regularLinks.forEach(link => {
+                    link.addEventListener("click", closeMenu);
+                });
+
+                /* WINDOW RESIZE */
+
+                window.addEventListener("resize", function () {
+
+                    if (window.innerWidth > 850) {
+                        closeMenu();
+                    }
+
+                });
+
+                console.log("Navigation initialised successfully.");
+
+            })
+
+            .catch(error => {
+
+                console.error("Navigation loading failed:", error);
+
+                menuContainer.innerHTML =
+                    "<p>Navigation could not be loaded.</p>";
+
             });
 
-            const regularLinks = navLinks.querySelectorAll("li:not(.dropdown) > a");
+    }
 
-            regularLinks.forEach(link => {
-                link.addEventListener("click", closeMenu);
-            });
+    /* WORK WHETHER DOMCONTENTLOADED HAS FIRED OR NOT */
 
-            window.addEventListener("resize", function () {
-                if (window.innerWidth > 850) {
-                    closeMenu();
-                }
-            });
+    if (document.readyState === "loading") {
 
-        })
-        .catch(error => {
-            console.error("Navigation loading failed:", error);
-            menuContainer.innerHTML = "<p>Navigation could not be loaded.</p>";
-        });
+        document.addEventListener("DOMContentLoaded", initialiseMenu);
 
-});
+    } else {
+
+        initialiseMenu();
+
+    }
+
+})();
