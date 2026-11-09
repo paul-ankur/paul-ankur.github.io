@@ -453,3 +453,10 @@ footer {
     transform: translateX(6px);
     box-shadow: 0 4px 12px rgba(51, 18, 4, 0.08);
 }
+
+p2 {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: justify;
+    text-justify: inter-word;
+}
