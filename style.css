@@ -479,7 +479,30 @@ footer {
     .nav-links > li > a::after {
         display: none;
     }
+    .nav-links > li > a {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
 
+.nav-links > li > a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-links > li > a:hover::after,
+.nav-links > li > a:focus-visible::after,
+.nav-links > li > a:active::after {
+    transform: translateX(-50%) scaleX(1);
+}
     /* MOBILE DROPDOWN */
 
     .dropdown-menu {
