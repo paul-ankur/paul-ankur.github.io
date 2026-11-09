@@ -29,6 +29,7 @@
                 menuContainer.innerHTML = menuHTML;
 
                 const nav = menuContainer.querySelector("#main-nav");
+                nav.classList.add("menu-open");
                 const menuToggle = menuContainer.querySelector("#menu-toggle");
                 const menuOverlay = menuContainer.querySelector("#menu-overlay");
                 const navLinks = menuContainer.querySelector("#nav-links");
