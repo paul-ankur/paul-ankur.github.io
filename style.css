@@ -154,14 +154,10 @@ nav {
     color: var(--header-text);
 }
 
-/* DROPDOWN HOVER */
-
 .dropdown-menu a:hover {
     color: var(--accent);
     background: rgba(255, 255, 255, 0.06);
 }
-
-/* NO UNDERLINE ANIMATION ON DROPDOWN ITEMS */
 
 .dropdown-menu a::after {
     display: none;
@@ -196,6 +192,50 @@ nav {
 }
 
 /* =========================================
+   MOBILE MENU ELEMENTS
+   ========================================= */
+
+/* HAMBURGER BUTTON */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 27px;
+    height: 3px;
+    background: var(--header-text);
+    margin: 5px 0;
+    border-radius: 2px;
+}
+
+/* CLOSE BUTTON */
+
+.mobile-close {
+    display: none;
+}
+
+.mobile-close button {
+    background: none;
+    border: none;
+    color: var(--header-text);
+    font-size: 35px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* OVERLAY */
+
+.menu-overlay {
+    display: none;
+}
+
+/* =========================================
    PAGE CONTAINER
    ========================================= */
 
@@ -226,14 +266,14 @@ header {
    GENERAL HEADING SETTINGS
    ========================================= */
 
-h1{
+h1 {
     font-family: "Times New Roman", serif;
     font-size: 30px;
     font-weight: 900;
     color: #000000;
 }
 
-h2{
+h2 {
     font-family: "Times New Roman", serif;
     font-size: 25px;
     font-weight: 900;
@@ -246,7 +286,6 @@ h3 {
     font-weight: 900;
     color: #E2581D;
 }
-
 
 /* =========================================
    GENERAL TEXT
@@ -267,9 +306,8 @@ p, li {
     font-size: 16px;
     line-height: 1.5;
     color: #331204;
-   margin-bottom: 8px;
+    margin-bottom: 8px;
 }
-
 
 /* =========================================
    LINKS
@@ -360,36 +398,160 @@ footer {
 }
 
 /* =========================================
-   RESPONSIVE DESIGN - TABLETS
+   RESPONSIVE DESIGN - TABLETS AND MOBILE
    ========================================= */
 
 @media (max-width: 850px) {
 
+    /* NAVIGATION BAR */
+
     nav {
-        flex-direction: column;
+        position: relative;
+        z-index: 1001;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        flex-wrap: nowrap;
+        padding: 15px 5%;
     }
 
-    .nav-links {
-        justify-content: center;
+    /* WEBSITE NAME */
+
+    .site-name {
+        font-size: 21px;
     }
+
+    /* HAMBURGER BUTTON */
+
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* SLIDING NAVIGATION PANEL */
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        width: min(320px, 85vw);
+        height: 100vh;
+
+        background: var(--header-bg);
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        gap: 0;
+
+        padding: 20px 25px;
+
+        overflow-y: auto;
+
+        z-index: 1003;
+
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+
+        list-style: none;
+    }
+
+    /* OPEN PANEL */
+
+    nav.menu-open .nav-links {
+        transform: translateX(0);
+    }
+
+    /* CLOSE BUTTON */
+
+    .mobile-close {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    /* MOBILE LINKS */
+
+    .nav-links > li {
+        width: 100%;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .nav-links > li > a {
+        display: block;
+        font-size: 18px;
+        padding: 5px 0;
+    }
+
+    .nav-links > li > a::after {
+        display: none;
+    }
+
+    /* MOBILE DROPDOWN */
 
     .dropdown-menu {
         display: none;
         position: static;
         width: 100%;
-        min-width: 190px;
+        min-width: 0;
+
         box-shadow: none;
         border-top: 1px solid var(--accent);
+
+        padding: 8px 0 0;
+        margin-top: 12px;
     }
 
     .dropdown.active > .dropdown-menu {
         display: block;
     }
 
+    .dropdown-menu a {
+        white-space: normal;
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
     .dropdown.active > a .arrow {
         transform: rotate(180deg);
     }
+
+    /* OVERLAY */
+
+    .menu-overlay {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.55);
+
+        z-index: 1002;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition: opacity 0.35s ease,
+                    visibility 0.35s ease;
+
+        cursor: pointer;
+    }
+
+    nav.menu-open .menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* PREVENT BACKGROUND SCROLL */
+
+    body.menu-active {
+        overflow: hidden;
+    }
+
 }
 
 /* =========================================
@@ -421,15 +583,7 @@ footer {
         text-align: justify;
     }
 
-    .nav-links {
-        gap: 15px;
-    }
-
-    .nav-links a {
-        font-size: 16px;
-    }
 }
-
 
 /* =========================================
    UNIVERSAL BOX DESIGN
@@ -441,6 +595,7 @@ footer {
     border: 1px solid var(--border);
     border-left: 4px solid transparent;
     border-radius: 8px;
+
     transition: border-left-color 0.3s ease,
                 transform 0.3s ease,
                 box-shadow 0.3s ease;
@@ -453,6 +608,10 @@ footer {
     transform: translateX(6px);
     box-shadow: 0 4px 12px rgba(51, 18, 4, 0.08);
 }
+
+/* =========================================
+   ADDITIONAL TEXT
+   ========================================= */
 
 p2 {
     font-size: 15px;
