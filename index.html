@@ -92,6 +92,8 @@
 
 /* RESPONSIVE PROFILE */
 
+/* RESPONSIVE PROFILE */
+
 @media (max-width: 650px) {
 
     .profile {
@@ -103,15 +105,26 @@
     .profile-photo {
         width: 200px;
         height: 230px;
+        align-self: center;
     }
 
     .profile-details {
-        text-align: center;
+        text-align: left;
         width: 100%;
     }
 
+    .profile-details h1,
+    .profile-details .institution {
+        text-align: left;
+    }
+
+    .profile-details > p:not(.institution) {
+        text-align: justify;
+        text-align-last: left;
+    }
+
     .profile-links {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
 }
