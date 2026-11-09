@@ -33,10 +33,16 @@
                 return;
             }
 
+            // ENSURE MENU IS CLOSED INITIALLY
+
+            nav.classList.remove("menu-open");
+            document.body.classList.remove("menu-active");
+
             menuToggle.setAttribute("type", "button");
             menuToggle.setAttribute("aria-expanded", "false");
 
             function openMenu() {
+                nav.classList.add("menu-open");
                 document.body.classList.add("menu-active");
                 menuToggle.setAttribute("aria-expanded", "true");
             }
