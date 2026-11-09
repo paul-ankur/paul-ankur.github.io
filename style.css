@@ -619,3 +619,21 @@ p2 {
     text-align: justify;
     text-justify: inter-word;
 }
+/* HIDE MOBILE MENU ELEMENTS ON DESKTOP */
+
+@media (min-width: 851px) {
+
+    .menu-toggle,
+    .mobile-close,
+    .menu-overlay {
+        display: none !important;
+    }
+
+    .nav-links {
+        position: static;
+        transform: none;
+        height: auto;
+        width: auto;
+    }
+
+}
