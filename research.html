@@ -33,20 +33,38 @@
     margin-bottom: 60px;
 }
 
+/* RESEARCH INTERESTS GRID */
+
 .research-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
 }
 
+/* COLLABORATORS GRID */
+
+.collaborators-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* MOBILE RESPONSIVE */
+
 @media (max-width: 700px) {
+
     .research-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collaborators-grid {
         grid-template-columns: 1fr;
     }
 
     .research-container {
         padding: 0 15px;
     }
+
 }
 
 </style>
@@ -95,7 +113,7 @@
 
 <h2>Collaborators</h2>
 
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px;">
+<div class="collaborators-grid">
 
     <div class="box">
         <h3>Prof. Dibakar Ghosh</h3>
@@ -129,7 +147,9 @@
 
     <p2>
         Communicated. Preprint DOI:
-        <a href="https://doi.org/10.21203/rs.3.rs-10332413/v2" target="_blank" rel="noopener noreferrer">10.21203/rs.3.rs-10332413/v2</a>
+        <a href="https://doi.org/10.21203/rs.3.rs-10332413/v2"
+           target="_blank"
+           rel="noopener noreferrer">10.21203/rs.3.rs-10332413/v2</a>
     </p2>
 
 </div>
