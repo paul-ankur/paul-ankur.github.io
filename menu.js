@@ -10,61 +10,53 @@
             return;
         }
 
-        const menuPath = new URL("/menu.html", window.location.origin);
+        fetch(new URL("/menu.html", window.location.origin), {
+            cache: "no-store"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Could not load menu.html: " + response.status);
+            }
+            return response.text();
+        })
+        .then(menuHTML => {
 
-        fetch(menuPath, { cache: "no-store" })
+            menuContainer.innerHTML = menuHTML;
 
-            .then(response => {
+            const nav = menuContainer.querySelector("#main-nav");
+            const navLinks = menuContainer.querySelector("#nav-links");
+            const menuToggle = menuContainer.querySelector("#menu-toggle");
+            const menuOverlay = menuContainer.querySelector("#menu-overlay");
 
-                if (!response.ok) {
-                    throw new Error("Could not load menu.html: " + response.status);
-                }
+            if (!nav || !navLinks || !menuToggle || !menuOverlay) {
+                console.error("Navigation elements are missing.");
+                return;
+            }
 
-                return response.text();
+            menuToggle.setAttribute("type", "button");
+            menuToggle.setAttribute("aria-expanded", "false");
 
-            })
-
-            .then(menuHTML => {
-
-                menuContainer.innerHTML = menuHTML;
-
-                const nav = menuContainer.querySelector("#main-nav");
+            function openMenu() {
                 nav.classList.add("menu-open");
-                const menuToggle = menuContainer.querySelector("#menu-toggle");
-                const menuOverlay = menuContainer.querySelector("#menu-overlay");
-                const navLinks = menuContainer.querySelector("#nav-links");
+                document.body.classList.add("menu-active");
+                menuToggle.setAttribute("aria-expanded", "true");
+            }
 
-                if (!nav || !menuToggle || !menuOverlay || !navLinks) {
-                    console.error("One or more navigation elements are missing.");
-                    return;
-                }
+            function closeMenu() {
+                nav.classList.remove("menu-open");
+                document.body.classList.remove("menu-active");
+                menuToggle.setAttribute("aria-expanded", "false");
 
-                function openMenu() {
+                navLinks.querySelectorAll(".dropdown").forEach(item => {
+                    item.classList.remove("active");
+                });
+            }
 
-                    nav.classList.add("menu-open");
-                    document.body.classList.add("menu-active");
+            document.addEventListener("click", function (event) {
 
-                    menuToggle.setAttribute("aria-expanded", "true");
+                const clickedToggle = event.target.closest("#menu-toggle");
 
-                }
-
-                function closeMenu() {
-
-                    nav.classList.remove("menu-open");
-                    document.body.classList.remove("menu-active");
-
-                    menuToggle.setAttribute("aria-expanded", "false");
-
-                    navLinks.querySelectorAll(".dropdown").forEach(item => {
-                        item.classList.remove("active");
-                    });
-
-                }
-
-                /* HAMBURGER BUTTON */
-
-                menuToggle.addEventListener("click", function (event) {
-
+                if (clickedToggle && nav.contains(clickedToggle)) {
                     event.preventDefault();
                     event.stopPropagation();
 
@@ -74,97 +66,67 @@
                         openMenu();
                     }
 
-                });
+                    return;
+                }
 
-                /* OVERLAY */
+                if (event.target.closest("#menu-overlay") === menuOverlay) {
+                    closeMenu();
+                    return;
+                }
 
-                menuOverlay.addEventListener("click", closeMenu);
+                const clickedLink = event.target.closest("#nav-links a");
 
-                /* ESCAPE KEY */
+                if (clickedLink && navLinks.contains(clickedLink)) {
 
-                document.addEventListener("keydown", function (event) {
+                    const dropdown = clickedLink.parentElement;
 
-                    if (event.key === "Escape") {
-                        closeMenu();
+                    if (
+                        dropdown.classList.contains("dropdown") &&
+                        window.innerWidth <= 850 &&
+                        !dropdown.classList.contains("active")
+                    ) {
+                        event.preventDefault();
+
+                        navLinks.querySelectorAll(".dropdown").forEach(item => {
+                            item.classList.remove("active");
+                        });
+
+                        dropdown.classList.add("active");
+                        return;
                     }
 
-                });
-
-                /* MOBILE DROPDOWNS */
-
-                const dropdowns = navLinks.querySelectorAll(".dropdown");
-
-                dropdowns.forEach(dropdown => {
-
-                    const link = dropdown.querySelector(":scope > a");
-
-                    if (!link) return;
-
-                    link.addEventListener("click", function (event) {
-
-                        if (window.innerWidth <= 850) {
-
-                            if (!dropdown.classList.contains("active")) {
-
-                                event.preventDefault();
-
-                                dropdowns.forEach(item => {
-                                    item.classList.remove("active");
-                                });
-
-                                dropdown.classList.add("active");
-
-                            }
-
-                        }
-
-                    });
-
-                });
-
-                /* NORMAL NAVIGATION LINKS */
-
-                const regularLinks = navLinks.querySelectorAll("li:not(.dropdown) > a");
-
-                regularLinks.forEach(link => {
-                    link.addEventListener("click", closeMenu);
-                });
-
-                /* WINDOW RESIZE */
-
-                window.addEventListener("resize", function () {
-
-                    if (window.innerWidth > 850) {
+                    if (!dropdown.classList.contains("dropdown")) {
                         closeMenu();
                     }
+                }
 
-                });
+            }, true);
 
-                console.log("Navigation initialised successfully.");
-
-            })
-
-            .catch(error => {
-
-                console.error("Navigation loading failed:", error);
-
-                menuContainer.innerHTML =
-                    "<p>Navigation could not be loaded.</p>";
-
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeMenu();
+                }
             });
 
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 850) {
+                    closeMenu();
+                }
+            });
+
+            console.log("Navigation initialised successfully.");
+
+        })
+        .catch(error => {
+            console.error("Navigation loading failed:", error);
+            menuContainer.innerHTML = "<p>Navigation could not be loaded.</p>";
+        });
     }
 
-    /* WORK WHETHER DOMCONTENTLOADED HAS FIRED OR NOT */
-
     if (document.readyState === "loading") {
-
         document.addEventListener("DOMContentLoaded", initialiseMenu);
-
     } else {
-
         initialiseMenu();
-
     }
 
 })();
