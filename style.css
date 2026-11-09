@@ -471,38 +471,40 @@ footer {
     }
 
     .nav-links > li > a {
-        display: block;
+        position: relative;
+        display: inline-block;
+        width: fit-content;
         font-size: 18px;
         padding: 5px 0;
     }
 
+    /* CENTRE-OUTWARD TOUCH UNDERLINE */
+
     .nav-links > li > a::after {
-        display: none;
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent);
+        transform: translateX(-50%) scaleX(0);
+        transform-origin: center;
+        transition: transform 0.3s ease;
     }
-    .nav-links > li > a {
-    position: relative;
-    display: inline-block;
-    width: fit-content;
-}
 
-.nav-links > li > a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--accent);
-    transform: translateX(-50%) scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
-}
+    .nav-links > li > a:hover::after,
+    .nav-links > li > a:focus::after,
+    .nav-links > li > a:active::after {
+        transform: translateX(-50%) scaleX(1);
+    }
 
-.nav-links > li > a:hover::after,
-.nav-links > li > a:focus-visible::after,
-.nav-links > li > a:active::after {
-    transform: translateX(-50%) scaleX(1);
-}
+    .nav-links > li > a:hover,
+    .nav-links > li > a:focus,
+    .nav-links > li > a:active {
+        color: var(--accent);
+    }
+
     /* MOBILE DROPDOWN */
 
     .dropdown-menu {
@@ -523,9 +525,21 @@ footer {
     }
 
     .dropdown-menu a {
+        position: relative;
         white-space: normal;
         font-size: 16px;
         padding: 10px 15px;
+        transition: color 0.3s ease,
+                    background 0.3s ease;
+    }
+
+    /* DROPDOWN TOUCH EFFECT */
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus,
+    .dropdown-menu a:active {
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.06);
     }
 
     .dropdown.active > a .arrow {
