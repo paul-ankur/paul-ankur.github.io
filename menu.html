@@ -1,8 +1,23 @@
 
-<nav>
+<nav id="main-nav">
+
     <span class="site-name">ANKUR PAUL</span>
 
-    <ul class="nav-links">
+    <!-- MOBILE MENU BUTTON -->
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- NAVIGATION LINKS -->
+
+    <ul class="nav-links" id="nav-links">
+
+        <li class="mobile-close">
+            <button id="menu-close" aria-label="Close menu">&times;</button>
+        </li>
 
         <li>
             <a href="index.html">Home</a>
@@ -36,7 +51,8 @@
 
         </li>
 
-   <!--     <li class="dropdown">
+        <!--
+        <li class="dropdown">
 
             <a href="others.html">
                 Others <span class="arrow">▾</span>
@@ -59,10 +75,16 @@
         <li>
             <a href="gallery.html">Gallery</a>
         </li>
--->
+        -->
+
         <li>
             <a href="contact.html">Contact</a>
         </li>
 
     </ul>
+
+    <!-- MOBILE OVERLAY -->
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+
 </nav>
