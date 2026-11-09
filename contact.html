@@ -14,10 +14,8 @@
 
 /* CONTACT PAGE */
 
-.contact-container {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 20px;
+main {
+    margin-top: -0.7cm;
 }
 
 .contact-intro {
@@ -63,14 +61,12 @@
 }
 
 @media (max-width: 700px) {
+
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 35px;
     }
 
-    .contact-container {
-        padding: 15px;
-    }
 }
 
 </style>
@@ -78,13 +74,19 @@
 
 <body>
 
+<!-- AUTOMATIC NAVIGATION -->
+
+<div id="menu-container"></div>
+
+<!-- PAGE HEADER -->
+
 <header>
-    <div id="menu-container"></div>
+    <h1>Contact</h1>
 </header>
 
-<main class="contact-container">
+<!-- MAIN CONTENT -->
 
-    <h1>Contact</h1>
+<main>
 
     <div class="contact-intro">
         <p1>
@@ -165,23 +167,29 @@
             <h2>Academic & Professional Addresses</h2>
 
             <div class="contact-item">
+
                 <div class="contact-item-title">Primary Address</div>
+
                 <p1>
-                    Department / Centre Name<br>
-                    Institute Name<br>
-                    City, State, PIN Code<br>
+                    Department of Mathematics<br>
+                    Indian Statistical Institute<br>
+                    Kolkata, West Bengal<br>
                     India
                 </p1>
+
             </div>
 
             <div class="contact-item">
+
                 <div class="contact-item-title">Secondary Address</div>
+
                 <p1>
                     Department / Centre Name<br>
                     Institute Name<br>
                     City, State, PIN Code<br>
                     India
                 </p1>
+
             </div>
 
         </section>
@@ -189,6 +197,14 @@
     </div>
 
 </main>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Ankur Paul.
+</footer>
+
+<!-- AUTOMATIC MENU SCRIPT -->
 
 <script src="menu.js"></script>
 
