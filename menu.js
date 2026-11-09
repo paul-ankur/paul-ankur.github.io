@@ -21,15 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const nav = menuContainer.querySelector("#main-nav");
             const menuToggle = menuContainer.querySelector("#menu-toggle");
-            const menuClose = menuContainer.querySelector("#menu-close");
             const menuOverlay = menuContainer.querySelector("#menu-overlay");
             const navLinks = menuContainer.querySelector("#nav-links");
 
-            if (!nav || !menuToggle || !menuClose || !menuOverlay || !navLinks) {
+            if (!nav || !menuToggle || !menuOverlay || !navLinks) {
+                console.error("Navigation elements missing.");
                 return;
             }
-
-            /* OPEN MENU */
 
             function openMenu() {
                 nav.classList.add("menu-open");
@@ -37,43 +35,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 menuToggle.setAttribute("aria-expanded", "true");
             }
 
-            /* CLOSE MENU */
-
             function closeMenu() {
                 nav.classList.remove("menu-open");
                 document.body.classList.remove("menu-active");
                 menuToggle.setAttribute("aria-expanded", "false");
+
+                navLinks.querySelectorAll(".dropdown").forEach(item => {
+                    item.classList.remove("active");
+                });
             }
 
-            /* HAMBURGER BUTTON */
+            menuToggle.addEventListener("click", openMenu);
 
-            menuToggle.addEventListener("click", function () {
-                openMenu();
-            });
-
-            /* CLOSE BUTTON */
-
-            menuClose.addEventListener("click", function () {
-                closeMenu();
-            });
-
-            /* OVERLAY CLICK */
-
-            menuOverlay.addEventListener("click", function () {
-                closeMenu();
-            });
-
-            /* ESCAPE KEY */
+            menuOverlay.addEventListener("click", closeMenu);
 
             document.addEventListener("keydown", function (event) {
-
                 if (event.key === "Escape") {
                     closeMenu();
                 }
-
             });
-
-            /* DROPDOWN MENU */
 
             const dropdowns = navLinks.querySelectorAll(".dropdown");
 
@@ -96,54 +76,27 @@ document.addEventListener("DOMContentLoaded", function () {
                             });
 
                             dropdown.classList.add("active");
-
                         }
-
                     }
-
                 });
-
             });
-
-            /* CLOSE MENU AFTER NAVIGATION */
 
             const regularLinks = navLinks.querySelectorAll("li:not(.dropdown) > a");
 
             regularLinks.forEach(link => {
-
-                link.addEventListener("click", function () {
-
-                    if (window.innerWidth <= 850) {
-                        closeMenu();
-                    }
-
-                });
-
+                link.addEventListener("click", closeMenu);
             });
 
-            /* RESET ON DESKTOP */
-
             window.addEventListener("resize", function () {
-
                 if (window.innerWidth > 850) {
                     closeMenu();
-
-                    dropdowns.forEach(item => {
-                        item.classList.remove("active");
-                    });
                 }
-
             });
 
         })
-
         .catch(error => {
-
             console.error("Navigation loading failed:", error);
-
-            menuContainer.innerHTML =
-                "<p>Navigation could not be loaded.</p>";
-
+            menuContainer.innerHTML = "<p>Navigation could not be loaded.</p>";
         });
 
 });
